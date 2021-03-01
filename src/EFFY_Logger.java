@@ -4,7 +4,6 @@ import java.time.format.DateTimeFormatter;
 
 
 public class EFFY_Logger {
-    private ZonedDateTime time;
     private String info;
 
     public EFFY_Logger(String info){
@@ -24,9 +23,7 @@ public class EFFY_Logger {
     }
 
     private String formatting(String info){
-        time = ZonedDateTime.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd:MM:yyyy HH:mm:ss");
-        return "["+time.format(formatter)+"] "+info+" \n";
+        return "["+ZonedDateTime.now().format(DateTimeFormatter.ofPattern("dd:MM:yyyy HH:mm:ss"))+"] "+info+" \n";
     }
 
 }
