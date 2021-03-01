@@ -4,17 +4,12 @@ import java.time.format.DateTimeFormatter;
 
 
 public class EFFY_Logger {
-    private String info;
 
-    public EFFY_Logger(String info){
-        this.info=info;
-    }
-
-    public void print(){
+    public void print(String info){
         System.out.println(formatting(info));
     }
 
-    public void write(String path,boolean append){
+    public void write(String path,boolean append,String info){
         try(FileWriter writer = new FileWriter(path,append)){
             if(append==true) writer.write(formatting(info));
         }catch (Exception ignore){
