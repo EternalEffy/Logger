@@ -1,13 +1,17 @@
 import java.io.FileWriter;
 import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class EFFY_Logger {
     private ZonedDateTime time;
     private String info;
 
+    public EFFY_Logger(String info){
+        this.info=info;
+    }
 
-    public void print(String info){
+    public void print(){
         System.out.println(formatting(info));
     }
 
@@ -20,9 +24,9 @@ public class EFFY_Logger {
     }
 
     private String formatting(String info){
-        this.info=info;
         time = ZonedDateTime.now();
-        return "["+time.getDayOfMonth()+"."+time.getMonthValue()+"."+time.getYear()+" "+time.getHour()+":"+time.getMinute()+":"+time.getSecond()+"] "+info+" \n";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd:MM:yyyy HH:mm:ss");
+        return "["+time.format(formatter)+"] "+info+" \n";
     }
 
 }
